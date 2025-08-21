@@ -191,7 +191,7 @@
             this.btnIgual.TabIndex = 10;
             this.btnIgual.Text = "=";
             this.btnIgual.UseVisualStyleBackColor = false;
-            this.btnIgual.Click += new System.EventHandler(this.operador_Click);
+            this.btnIgual.Click += new System.EventHandler(this.btnIgual_Click);
             // 
             // btnMais
             // 
@@ -259,6 +259,7 @@
             this.btnLimpar.TabIndex = 15;
             this.btnLimpar.Text = "C";
             this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // txbTela
             // 

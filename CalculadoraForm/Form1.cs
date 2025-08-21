@@ -25,21 +25,34 @@ namespace CalculadoraForm
         {
             // Para depois
 
+            DataTable dt = new DataTable();
+            try
+            {
+                var v = dt.Compute(txbTela.Text, "");
+                txbTela.Text = v.ToString();
+
+                if (txbTela.Text == "∞")
+                {
+                    btnLimpar.PerformClick();
+                    MessageBox.Show("Não é possível dividir por 0!", "Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Algo deu errado!", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void numero_Click(object sender, EventArgs e)
         {
-            // Obter o botão que esta chamando esse evento
 
-            Button botaoClicado = (Button)sender;
+            Button botaoClicado = (Button)sender; // Obter o botão que esta chamando esse evento
 
-            // Adicionar o Text do botão clicado no TextBox
+            txbTela.Text += botaoClicado.Text; // Adicionar o Text do botão clicado no TextBox
 
-            txbTela.Text += botaoClicado.Text;
-
-            // Abaixar a bandeirinha
-
-            operadorClicado = false;
+            operadorClicado = false; // Abaixar a bandeirinha
         }
 
         private void operador_Click(object sender, EventArgs e)
@@ -48,18 +61,24 @@ namespace CalculadoraForm
             if (operadorClicado == false)
             {
 
-                // Obter o botão que esta chamando esse evento
+                Button botaoClicado = (Button)sender; // Obter o botão que esta chamando esse evento
 
-                Button botaoClicado = (Button)sender;
-
-                // Adicionar o Text do botão clicado no TextBox
-
-                txbTela.Text += botaoClicado.Text;
+                txbTela.Text += botaoClicado.Text; // Adicionar o Text do botão clicado no TextBox
 
                 // Levantar a bandeirinha
 
                 operadorClicado = true;
             }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            // Limpar a tela:
+
+            txbTela.Text = "";
+
+            // Voltar o operador clicado para true:
+            operadorClicado = true;
         }
     }
 }
