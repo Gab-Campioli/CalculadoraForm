@@ -28,8 +28,8 @@ namespace CalculadoraForm
             DataTable dt = new DataTable();
             try
             {
-                var v = dt.Compute(txbTela.Text, "");
-                txbTela.Text = v.ToString();
+                var resultado = dt.Compute(txbTela.Text, "");
+                txbTela.Text = resultado.ToString();
 
                 if (txbTela.Text == "∞")
                 {
